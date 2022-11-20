@@ -12,7 +12,7 @@ github-repo: rstudio/bookdown-demo
 description: "This is a growing book of a series of mini-projects to analayze world data . The goal of this book is to build familiarity with data science tools at different levels."
 ---
 
-# Intro
+# Introduction
 
 This book contains a series of mini projects to learn data science using world data from different sources.
 

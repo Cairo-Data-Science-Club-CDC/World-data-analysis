@@ -309,7 +309,7 @@ region_pop %>%
 
 Few patterns pop-out. Sub-Saharan Africa and Middle East & North Africa show the largest region-specific growth. This large growth took place recently and over a short period. Europe had the smallest population at 1960 compared to other years.
 
-Heatmaps are very useful and scalable to visualize large datasets. Neverthelss, for our small dataset, we can use look at the regions population over the years compared to 2021.
+Heatmaps are very useful and scalable to visualize large datasets. Neverthelss, for our small dataset, we can simply look at the regions population over the years compared to 2021.
 
 ```{r}
 region_pop <- region_pop %>%
@@ -319,6 +319,7 @@ region_pop <- region_pop %>%
   ungroup() 
 ```
 
+Let's look at the plot
 
 ```{r}
 region_pop %>% 
@@ -346,14 +347,19 @@ region_pop %>%
 Europe & Central Asia population grew by only 30% since 1960 compared to Middle East & North Africa and  Sub-Saharan Africa huge 80% growth!
 
 
-What is population growth relative to 1960 across world regions?
-
+Similarly, is to compare population over the years to 1960. 
 ```{r}
-region_pop %>%
+region_pop <- region_pop %>%
   mutate(region = factor(region, rev(region_order$region))) %>%
   group_by(region) %>% 
   mutate(SP.POP.TOTL_region_start = log2(SP.POP.TOTL_region/head(SP.POP.TOTL_region,1))) %>% 
-  ungroup() %>% 
+  ungroup() 
+```
+
+Let's look at the plot
+
+```{r}
+region_pop %>% 
   ggplot(aes(year, SP.POP.TOTL_region_start, color =  region))+
   geom_line(show.legend = FALSE)+
   ggrepel::geom_text_repel(data = . %>% filter(year == 2021),

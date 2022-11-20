@@ -1,192 +1,142 @@
-<!DOCTYPE html>
-<html lang="" xml:lang="">
-<head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>2.1 Data collection | World data book</title>
-  <meta name="description" content="This is a growing book of a series of mini-projects to analayze world data . The goal of this book is to build familiarity with data science tools at different levels." />
-  <meta name="generator" content="bookdown 0.30 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="2.1 Data collection | World data book" />
-  <meta property="og:type" content="book" />
-  
-  <meta property="og:description" content="This is a growing book of a series of mini-projects to analayze world data . The goal of this book is to build familiarity with data science tools at different levels." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="2.1 Data collection | World data book" />
-  
-  <meta name="twitter:description" content="This is a growing book of a series of mini-projects to analayze world data . The goal of this book is to build familiarity with data science tools at different levels." />
-  
-
-<meta name="author" content="Mohamed R.Shoeb" />
-
-
-<meta name="date" content="2022-11-20" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="world-population.html"/>
-<link rel="next" href="data-visualization.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
 
 
 
+```
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+```
+
+```
+## ✔ ggplot2 3.4.0      ✔ purrr   0.3.5 
+## ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+## ✔ tidyr   1.2.0      ✔ stringr 1.4.1 
+## ✔ readr   2.1.2      ✔ forcats 0.5.1
+```
+
+```
+## Warning: package 'ggplot2' was built under R version 4.2.2
+```
+
+```
+## Warning: package 'tibble' was built under R version 4.2.2
+```
+
+```
+## Warning: package 'purrr' was built under R version 4.2.2
+```
+
+```
+## Warning: package 'dplyr' was built under R version 4.2.2
+```
+
+```
+## Warning: package 'stringr' was built under R version 4.2.2
+```
+
+```
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+```
+
+```
+## Warning: package 'magrittr' was built under R version 4.2.2
+```
+
+```
+## 
+## Attaching package: 'magrittr'
+```
+
+```
+## The following object is masked from 'package:purrr':
+## 
+##     set_names
+```
+
+```
+## The following object is masked from 'package:tidyr':
+## 
+##     extract
+```
+
+```
+## Warning: package 'patchwork' was built under R version 4.2.2
+```
+
+# World population
+
+Exploratory data analysis of total world population, regions, and countries.
+
+Where can one find data on world population? Many!
+
+Primary sources:
+
+-   [International Database (IDB)](https://www.census.gov/data-tools/demo/idb/#/country?COUNTRY_YEAR=2022&COUNTRY_YR_ANIM=2022) from the United States Census Bureau provides population estimates and projections for 227 countries and areas.
+
+-   [World Population Prospects 2022](https://population.un.org/wpp/) from the United Nations is the latest assessment considers the results of 1,758 national population censuses conducted between 1950 and 2022.
+
+-   [World Bank](https://data.worldbank.org/indicator/SP.POP.TOTL) offers world population estimates from 1960 to 2021.
+
+Secondary sources:
+
+-   [Gapminder](https://www.gapminder.org/data/documentation/gd003/) foundation collects data from different resources on world population from 1800 to 2100.
+
+-   [Our World in Data](https://ourworldindata.org/world-population-growth) brings together the most reliable and informative data sets.
+
+Live population clocks:
+
+-   [worldmeters](https://www.worldometers.info/world-population/)
+
+-   [International Database from the US Census Bureau.](https://www.census.gov/popclock/world/)
+
+R interface:
+
+-   [Gapminder](#https://rdrr.io/cran/gapminder/) package in R is a limited excerpt until 2017.
+
+-   [WDI](https://github.com/vincentarelbundock/WDI) package allows users to search and download data from over 40 datasets hosted by the World Bank.
+
+Miscellaneous:
+
+-   A [collection](https://cengel.github.io/gearup2016/SULdataAccess.html) of updated resources for accessing social science data on various topics from R.
+
+## Data collection
+
+In this tutorial I'll be retrieve data and metadata from [World Bank](https://data.worldbank.org/indicator/SP.POP.TOTL) on world popoulation between 1960 and 2021 [WDI](https://github.com/vincentarelbundock/WDI) package.
+
+We start by loading the population data and countries metadata from World Bank.
 
 
+```r
+#population data
+country_pop <- WDI::WDI(indicator='SP.POP.TOTL',
+                        start=1960,
+                        end=2022)
+#metadata
+country_meta <- WDI::WDI_data$country
+```
 
+Now let's have a brief look on these two large tables.
 
+```r
+#data table
+glimpse(country_pop)
+```
 
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-
-<link rel="stylesheet" href="style.css" type="text/css" />
-</head>
-
-<body>
-
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li><a href="./">World-data-analysis</a></li>
-
-<li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a></li>
-<li class="chapter" data-level="2" data-path="world-population.html"><a href="world-population.html"><i class="fa fa-check"></i><b>2</b> World population</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="data-collection.html"><a href="data-collection.html"><i class="fa fa-check"></i><b>2.1</b> Data collection</a></li>
-<li class="chapter" data-level="2.2" data-path="data-visualization.html"><a href="data-visualization.html"><i class="fa fa-check"></i><b>2.2</b> Data Visualization</a>
-<ul>
-<li class="chapter" data-level="2.2.1" data-path="data-visualization.html"><a href="data-visualization.html#total-world-population"><i class="fa fa-check"></i><b>2.2.1</b> Total world population</a></li>
-<li class="chapter" data-level="2.2.2" data-path="data-visualization.html"><a href="data-visualization.html#world-regions-population"><i class="fa fa-check"></i><b>2.2.2</b> World regions population</a></li>
-</ul></li>
-</ul></li>
-<li class="divider"></li>
-<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-
-</ul>
-
-      </nav>
-    </div>
-
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">World data book</a>
-          </h1>
-        </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="data-collection" class="section level2 hasAnchor" number="2.1">
-<h2><span class="header-section-number">2.1</span> Data collection<a href="data-collection.html#data-collection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>In this tutorial I’ll be retrieve data and metadata from <a href="https://data.worldbank.org/indicator/SP.POP.TOTL">World Bank</a> on world popoulation between 1960 and 2021 <a href="https://github.com/vincentarelbundock/WDI">WDI</a> package.</p>
-<p>We start by loading the population data and countries metadata from World Bank.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="data-collection.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">#population data</span></span>
-<span id="cb14-2"><a href="data-collection.html#cb14-2" aria-hidden="true" tabindex="-1"></a>country_pop <span class="ot">&lt;-</span> WDI<span class="sc">::</span><span class="fu">WDI</span>(<span class="at">indicator=</span><span class="st">&#39;SP.POP.TOTL&#39;</span>,</span>
-<span id="cb14-3"><a href="data-collection.html#cb14-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">start=</span><span class="dv">1960</span>,</span>
-<span id="cb14-4"><a href="data-collection.html#cb14-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">end=</span><span class="dv">2022</span>)</span>
-<span id="cb14-5"><a href="data-collection.html#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#metadata</span></span>
-<span id="cb14-6"><a href="data-collection.html#cb14-6" aria-hidden="true" tabindex="-1"></a>country_meta <span class="ot">&lt;-</span> WDI<span class="sc">::</span>WDI_data<span class="sc">$</span>country</span></code></pre></div>
-<p>Now let’s have a brief look on these two large tables.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="data-collection.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#data table</span></span>
-<span id="cb15-2"><a href="data-collection.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(country_pop)</span></code></pre></div>
-<pre><code>## Rows: 16,492
+```
+## Rows: 16,492
 ## Columns: 5
-## $ country     &lt;chr&gt; &quot;Africa Eastern and Southern&quot;, &quot;Africa Eastern and Souther…
-## $ iso2c       &lt;chr&gt; &quot;ZH&quot;, &quot;ZH&quot;, &quot;ZH&quot;, &quot;ZH&quot;, &quot;ZH&quot;, &quot;ZH&quot;, &quot;ZH&quot;, &quot;ZH&quot;, &quot;ZH&quot;, &quot;ZH&quot;…
-## $ iso3c       &lt;chr&gt; &quot;AFE&quot;, &quot;AFE&quot;, &quot;AFE&quot;, &quot;AFE&quot;, &quot;AFE&quot;, &quot;AFE&quot;, &quot;AFE&quot;, &quot;AFE&quot;, &quot;A…
-## $ year        &lt;int&gt; 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012…
-## $ SP.POP.TOTL &lt;dbl&gt; 694665117, 677243299, 660046272, 643090131, 626392880, 609…</code></pre>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="data-collection.html#cb17-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(<span class="fu">head</span>(country_pop))</span></code></pre></div>
+## $ country     <chr> "Africa Eastern and Southern", "Africa Eastern and Souther…
+## $ iso2c       <chr> "ZH", "ZH", "ZH", "ZH", "ZH", "ZH", "ZH", "ZH", "ZH", "ZH"…
+## $ iso3c       <chr> "AFE", "AFE", "AFE", "AFE", "AFE", "AFE", "AFE", "AFE", "A…
+## $ year        <int> 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012…
+## $ SP.POP.TOTL <dbl> 694665117, 677243299, 660046272, 643090131, 626392880, 609…
+```
+
+```r
+gt::gt(head(country_pop))
+```
+
+```{=html}
 <div id="htcavkadfj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -639,20 +589,33 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 </table>
 </div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="data-collection.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co">#metadata table</span></span>
-<span id="cb18-2"><a href="data-collection.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(country_meta)</span></code></pre></div>
-<pre><code>## Rows: 299
+```
+
+
+```r
+#metadata table
+glimpse(country_meta)
+```
+
+```
+## Rows: 299
 ## Columns: 9
-## $ iso3c     &lt;chr&gt; &quot;ABW&quot;, &quot;AFE&quot;, &quot;AFG&quot;, &quot;AFR&quot;, &quot;AFW&quot;, &quot;AGO&quot;, &quot;ALB&quot;, &quot;AND&quot;, &quot;ARB…
-## $ iso2c     &lt;chr&gt; &quot;AW&quot;, &quot;ZH&quot;, &quot;AF&quot;, &quot;A9&quot;, &quot;ZI&quot;, &quot;AO&quot;, &quot;AL&quot;, &quot;AD&quot;, &quot;1A&quot;, &quot;AE&quot;, …
-## $ country   &lt;chr&gt; &quot;Aruba&quot;, &quot;Africa Eastern and Southern&quot;, &quot;Afghanistan&quot;, &quot;Afri…
-## $ region    &lt;chr&gt; &quot;Latin America &amp; Caribbean&quot;, &quot;Aggregates&quot;, &quot;South Asia&quot;, &quot;Ag…
-## $ capital   &lt;chr&gt; &quot;Oranjestad&quot;, &quot;&quot;, &quot;Kabul&quot;, &quot;&quot;, &quot;&quot;, &quot;Luanda&quot;, &quot;Tirane&quot;, &quot;Ando…
-## $ longitude &lt;chr&gt; &quot;-70.0167&quot;, &quot;&quot;, &quot;69.1761&quot;, &quot;&quot;, &quot;&quot;, &quot;13.242&quot;, &quot;19.8172&quot;, &quot;1.5…
-## $ latitude  &lt;chr&gt; &quot;12.5167&quot;, &quot;&quot;, &quot;34.5228&quot;, &quot;&quot;, &quot;&quot;, &quot;-8.81155&quot;, &quot;41.3317&quot;, &quot;42…
-## $ income    &lt;chr&gt; &quot;High income&quot;, &quot;Aggregates&quot;, &quot;Low income&quot;, &quot;Aggregates&quot;, &quot;Ag…
-## $ lending   &lt;chr&gt; &quot;Not classified&quot;, &quot;Aggregates&quot;, &quot;IDA&quot;, &quot;Aggregates&quot;, &quot;Aggreg…</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="data-collection.html#cb20-1" aria-hidden="true" tabindex="-1"></a>gt<span class="sc">::</span><span class="fu">gt</span>(<span class="fu">head</span>(country_meta))</span></code></pre></div>
+## $ iso3c     <chr> "ABW", "AFE", "AFG", "AFR", "AFW", "AGO", "ALB", "AND", "ARB…
+## $ iso2c     <chr> "AW", "ZH", "AF", "A9", "ZI", "AO", "AL", "AD", "1A", "AE", …
+## $ country   <chr> "Aruba", "Africa Eastern and Southern", "Afghanistan", "Afri…
+## $ region    <chr> "Latin America & Caribbean", "Aggregates", "South Asia", "Ag…
+## $ capital   <chr> "Oranjestad", "", "Kabul", "", "", "Luanda", "Tirane", "Ando…
+## $ longitude <chr> "-70.0167", "", "69.1761", "", "", "13.242", "19.8172", "1.5…
+## $ latitude  <chr> "12.5167", "", "34.5228", "", "", "-8.81155", "41.3317", "42…
+## $ income    <chr> "High income", "Aggregates", "Low income", "Aggregates", "Ag…
+## $ lending   <chr> "Not classified", "Aggregates", "IDA", "Aggregates", "Aggreg…
+```
+
+```r
+gt::gt(head(country_meta))
+```
+
+```{=html}
 <div id="ufkrvnclwq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
@@ -1133,69 +1096,352 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   
 </table>
 </div>
-<p>Looks like a lot of data!
-Let’s dive a bit deeper and explore the data visually.</p>
-</div>
-            </section>
+```
 
-          </div>
-        </div>
-      </div>
-<a href="world-population.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-visualization.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
-  </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": true,
-"facebook": false,
-"twitter": false,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/Cairo-Data-Science-Club-CDC/World-data-analysis/edit/main/01_world_population.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "section"
-}
-});
-});
-</script>
+Looks like a lot of data!
+Let's dive a bit deeper and explore the data visually.
 
-</body>
 
-</html>
+## Data Visualization
+
+I'll start by defining a caption for plots stating the source of the data.
+
+
+```r
+data_caption <- "Data source: World Bank (WDI R package), Indicator: SP.POP.TOTL"
+```
+
+### Total world population
+
+First we look at world population as a whole.
+hmm, I wonder how does the world population look like over the years?
+
+
+```r
+country_pop %>% 
+  filter(country == "World") %>% #select total world population
+  ggplot(aes(year, SP.POP.TOTL))+
+  geom_point(alpha = 0.56)+
+  geom_line()+
+  labs(x = "Year",
+       y = "Population",
+       title = "Total world population",
+       subtitle = "Global population between 1960 and 2021, one-year interval",
+       caption = data_caption)
+```
+
+<img src="01_world_population_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+The plot shows the increase world population from 3 billions to almost 8 billions between 1960 and 2021.
+
+Let's have a better understanding of this increase by looking at the annual growth since 1960.
+
+
+```r
+diff_growth <- country_pop %>% 
+  filter(country == "World") %>% 
+  arrange(year) %>% 
+  mutate(SP.POP.TOTL_diff = SP.POP.TOTL- lag(SP.POP.TOTL)) %>% #subtract each ear from the previous
+  na.omit()%>% #remove 1960
+  ggplot(aes(year, SP.POP.TOTL_diff))+
+  geom_line()+
+  geom_vline(xintercept = c(1990, 2013, 2017),
+             lty = 2,
+             color = "blue")+
+  labs(x = "Year",
+       y = "Population",
+       title = "Annual growth of world population ",
+       subtitle = "Absolute annual growth: difference between two subsequent years",
+       caption = data_caption)+
+  labs(y = "Population", x = "Year")
+```
+We can see that around 1990 the annual growth peaked to around 90 millions. Around 2013 the annual growth hit a plateau followed by a decreasing pattern around 2017. 
+
+We can also study the annual population growth by looking at the relative increase rather than the absolute.
+
+```r
+rel_growth <- country_pop %>% 
+  filter(country == "World") %>% 
+  arrange(year) %>% 
+  mutate(SP.POP.TOTL_diff = (SP.POP.TOTL-lag(SP.POP.TOTL))/lag(SP.POP.TOTL)) %>% 
+  na.omit()%>%
+  ggplot(aes(year, SP.POP.TOTL_diff))+
+  geom_line()+
+  geom_hline(yintercept = 0.01,
+             lty = 2,
+             color = "red")+
+  geom_vline(xintercept = c(1990),
+           lty = 2,
+           color = "blue")+
+  scale_y_continuous(labels = scales::percent_format())+
+  labs(x = "Year",
+       y = "Percentage",
+       title = "",
+       subtitle = "Relative annual growth: divison of two subsequent years",
+       caption = data_caption)
+```
+Here we can clearly see the decrease in population growth after 1990, dropping below 1% around 2020.
+
+Let' combine these two complementary views of the world population growth in a single plot. 
+
+
+```r
+diff_growth/rel_growth
+```
+
+<img src="01_world_population_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+
+
+### World regions population
+
+Now let's shift our focus from global to regional level.
+
+We start by adding the regions metadata.
+
+```r
+region_pop <- country_pop %>% 
+  left_join(country_meta)%>% #merge data and metadata tables
+  filter(region != "Aggregates") %>% #select regions
+  group_by(region, year) %>%
+  summarize(SP.POP.TOTL_region = sum(SP.POP.TOTL, na.rm = TRUE))%>%
+  ungroup() %>% 
+  mutate(year = as.integer(year))
+```
+
+```
+## Joining, by = c("country", "iso2c", "iso3c")
+## `summarise()` has grouped output by 'region'. You can override using the
+## `.groups` argument.
+```
+
+We then order the regions based on their initial populations at 1960. This would make it easier and more organized to plot.
+
+```r
+region_order <- region_pop %>%
+  slice_min(year,n = 1) %>%
+  arrange(SP.POP.TOTL_region) 
+```
+
+We've previously looked at total world population over the years. Now let's look at the contribution of each region to the world population.
+
+```r
+region_pop %>%
+  mutate(region = factor(region, region_order$region)) %>%
+  ggplot(aes(year, SP.POP.TOTL_region, fill = region))+
+  geom_col()+
+  scale_fill_brewer(palette = "Dark2")+
+  guides(fill = guide_legend(override.aes = list(size = 0.5)))+
+  labs(x = "Year",
+       y = "Percentage",
+       title = "World regions population",
+       subtitle = "Regions population between 1960 and 2021, one-year interval",
+       caption = data_caption)+
+  theme(legend.position = c(0.05,0.8),
+        legend.text = element_text(size = 8),
+        legend.title = element_blank())
+```
+
+<img src="01_world_population_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+The plot shows that East Asia & Pacific has the largest contribution to world population, while Middle East & North Africa and North America have the smallest.
+
+It's easier to think of relative contribution rather than absolute.
+
+
+```r
+region_pop %>%
+  mutate(region = factor(region, region_order$region)) %>%
+  ggplot(aes(year, SP.POP.TOTL_region, fill = region))+
+  geom_col(width = 1,
+           position = position_fill())+
+  scale_y_continuous(labels = scales::percent_format())+
+  scale_fill_brewer(palette = "Dark2")+
+labs(x = "Year",
+       y = "Percentage",
+       title = "World regions population",
+       subtitle = "Regions population between 1960 and 2021, one-year interval",
+       caption = data_caption)
+```
+
+<img src="01_world_population_files/figure-html/unnamed-chunk-13-1.png" width="672" />
+
+I'll take this plot step further by removing the legend and annotating the each region "stratum" in the plot. To do this, first, calculate the percentage of ordered regions populations at a 1960. Then, compute the cumulative sum of the percentages. Finally, find the middle of each region layer where the text will be added.
+
+
+```r
+#find the mid-point of each region's layer
+region_order <- region_pop %>%
+  slice_min(year,n = 1) %>%
+  arrange(SP.POP.TOTL_region) %>% 
+  mutate(region_percent = SP.POP.TOTL_region/sum(SP.POP.TOTL_region),
+         region_cum = cumsum(region_percent),
+         cum_mid = region_cum-(region_percent/2))
+```
+
+Now let's look on the improved plot.
+
+```r
+region_pop %>%
+  mutate(region = factor(region, region_order$region)) %>%
+  ggplot(aes(year, SP.POP.TOTL_region, fill = region))+
+  geom_col(width = 1,
+           position = position_fill(),
+           show.legend = FALSE)+
+  geom_text(data = region_order,
+            aes(year+30, 1-cum_mid, label = region),
+            hjust = "middle",
+            color = "white")+
+  scale_y_continuous(labels = scales::percent_format())+
+  scale_fill_brewer(palette = "Dark2")+
+labs(x = "Year",
+       y = "Percentage",
+       title = "World regions population",
+       subtitle = "Regions population between 1960 and 2021, one-year interval",
+       caption = data_caption)
+```
+
+<img src="01_world_population_files/figure-html/unnamed-chunk-15-1.png" width="672" />
+
+Looks pretty! It's also easier to read. We can clearly see that East Asia & Pacific has an almost constant contribution -around 30%- to world population. Europe and Sub-Saharan Africa have opposing trend in contribution with the first is first decreasing and the second increasing.
+
+Each world region has a different pattern and magnitude of population growth.
+Let's make a heatmap that highlights these differences!
+
+We start by putting all regions on the same scale by calculating the z-score (how many standard deviation away from the mean year).
+
+
+```r
+region_pop <- region_pop %>%
+  mutate(region = factor(region, rev(region_order$region))) %>% #maintain the order of regions in the previous plots
+  group_by(region) %>% 
+  mutate(SP.POP.TOTL_region_scaled = scale(SP.POP.TOTL_region)[,1]) %>% #calculate z-score
+  ungroup()
+
+global_pop_mean_year <- country_pop %>%
+  filter(country == "World") %>%
+  mutate(SP.POP.TOTL_region_scaled = scale(SP.POP.TOTL)[,1]) %>%
+  slice_min(abs(SP.POP.TOTL_region_scaled), n=1) %$%
+  year
+```
+
+Let's plot the heatmap
+
+```r
+region_pop %>% 
+  ggplot(aes(year, region, fill = SP.POP.TOTL_region_scaled ))+
+  geom_tile()+
+  #add small bar at the average year for each region
+  geom_point(data = . %>% group_by(region) %>% slice_min(abs(SP.POP.TOTL_region_scaled),n=1),
+             shape = "|",
+             size = 8)+
+  #add line at the world average population year 
+  geom_segment(aes(x = global_pop_mean_year, y = 0.5, xend = global_pop_mean_year, yend = 7.5),
+               lty = 2)+
+  annotate("text", x = global_pop_mean_year, y = 8, label = "Global (dashed) and region (solid) mean year ")+
+  scale_y_discrete(expand = expansion(add = c(0,2)))+
+  scale_fill_distiller(palette = "RdBu")+
+  labs(x = "Year",
+       y = "",
+       fill = "Scaled\npopulation",
+       title = "World regions population",
+       subtitle = "Regions population between 1960 and 2021, one-year interval",
+       caption = data_caption)+
+  theme(axis.line.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        #legend specification
+        legend.direction = "horizontal",
+        legend.position = "top",
+        legend.justification="right",
+        legend.key.width = unit(0.5, "cm"),
+        legend.box.background = element_rect(color="grey20", linewidth=1, fill = "grey95"),
+        legend.box.margin = margin(4, 4, 4, 4),
+        legend.text = element_text(size = 10),
+        legend.title = element_text(size = 10))
+```
+
+<img src="01_world_population_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+
+Few patterns pop-out. Sub-Saharan Africa and Middle East & North Africa show the largest region-specific growth. This large growth took place recently and over a short period. Europe had the smallest population at 1960 compared to other years.
+
+Heatmaps are very useful and scalable to visualize large datasets. Neverthelss, for our small dataset, we can use look at the regions population over the years compared to 2021.
+
+
+```r
+region_pop <- region_pop %>%
+  mutate(region = factor(region, rev(region_order$region))) %>%
+  group_by(region) %>% 
+  mutate(SP.POP.TOTL_region_perc = SP.POP.TOTL_region/tail(SP.POP.TOTL_region,1)) %>%#percentage compared to 2021 
+  ungroup() 
+```
+
+
+
+```r
+region_pop %>% 
+  ggplot(aes(year, SP.POP.TOTL_region_perc, color =  region))+
+  geom_line(show.legend = FALSE)+
+  ggrepel::geom_text_repel(data = . %>% filter(year == 1960),
+            aes(label = region),
+            force  = 0.5,
+            nudge_x = -5,
+            direction = "y",
+            hjust = 1,
+            show.legend = FALSE)+
+  scale_color_brewer(palette = "Dark2")+
+  scale_y_continuous(labels = scales::percent_format())+
+  scale_x_continuous(breaks = seq(1960,2020, by = 10),
+                     expand = expansion(add = c(30,3)))+
+  labs(x = "Year",
+       y = "Scaled cumulative growth",
+       title = "World regions population growth",
+       subtitle = "Relative population growth of world regions since 1960 compared to 2021",
+       caption = data_caption)+
+  theme(legend.position = c(0.6, 0.3))
+```
+
+<img src="01_world_population_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+
+Europe & Central Asia population grew by only 30% since 1960 compared to Middle East & North Africa and  Sub-Saharan Africa huge 80% growth!
+
+
+What is population growth relative to 1960 across world regions?
+
+
+```r
+region_pop %>%
+  mutate(region = factor(region, rev(region_order$region))) %>%
+  group_by(region) %>% 
+  mutate(SP.POP.TOTL_region_start = log2(SP.POP.TOTL_region/head(SP.POP.TOTL_region,1))) %>% 
+  ungroup() %>% 
+  ggplot(aes(year, SP.POP.TOTL_region_start, color =  region))+
+  geom_line(show.legend = FALSE)+
+  ggrepel::geom_text_repel(data = . %>% filter(year == 2021),
+            aes(label = region),
+            force  = 0.5,
+            nudge_x = 5,
+            direction = "y",
+            hjust = "left",
+            show.legend = FALSE)+
+  scale_color_brewer(palette = "Dark2")+
+  scale_x_continuous(breaks = seq(1960,2020, by = 10),
+                     expand = expansion(add = c(3,30)))+
+  labs(x = "Year",
+       y = "Fold increase relative to 1960",
+       fill = "Scaled\npopulation",
+       title = "Relative world regions growth",
+       subtitle = "World regions population growth over the years, relative to 1960",
+       caption = data_caption)+
+  theme(legend.direction = "horizontal",
+        legend.position = "top",
+        legend.justification="right",
+        legend.key.width = unit(0.75, "cm"),
+        legend.box.background = element_rect(color="grey20", linewidth=1, fill = "grey95"),
+        legend.box.margin = margin(4, 4, 4, 4))
+```
+
+<img src="01_world_population_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+
+
+
+
+
+
+

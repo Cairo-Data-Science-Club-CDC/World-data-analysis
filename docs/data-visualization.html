@@ -136,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">World-data-analysis</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Intro</a></li>
 <li class="chapter" data-level="2" data-path="world-population.html"><a href="world-population.html"><i class="fa fa-check"></i><b>2</b> World population</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="data-collection.html"><a href="data-collection.html"><i class="fa fa-check"></i><b>2.1</b> Data collection</a></li>
@@ -184,7 +184,7 @@ hmm, I wonder how does the world population look like over the years?</p>
 <span id="cb22-8"><a href="data-visualization.html#cb22-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;Total world population&quot;</span>,</span>
 <span id="cb22-9"><a href="data-visualization.html#cb22-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Global population between 1960 and 2021, one-year interval&quot;</span>,</span>
 <span id="cb22-10"><a href="data-visualization.html#cb22-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> data_caption)</span></code></pre></div>
-<p><img src="01_chapter_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<p><img src="01_world_population_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 The plot shows the increase world population from 3 billions to almost 8 billions between 1960 and 2021.</p>
 <p>Let’s have a better understanding of this increase by looking at the annual growth since 1960.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="data-visualization.html#cb23-1" aria-hidden="true" tabindex="-1"></a>diff_growth <span class="ot">&lt;-</span> country_pop <span class="sc">%&gt;%</span> </span>
@@ -227,7 +227,7 @@ The plot shows the increase world population from 3 billions to almost 8 billion
 <p>Here we can clearly see the decrease in population growth after 1990, dropping below 1% around 2020.</p>
 <p>Let’ combine these two complementary views of the world population growth in a single plot.</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="data-visualization.html#cb25-1" aria-hidden="true" tabindex="-1"></a>diff_growth<span class="sc">/</span>rel_growth</span></code></pre></div>
-<p><img src="01_chapter_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="01_world_population_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 <div id="world-regions-population" class="section level3 hasAnchor" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> World regions population<a href="data-visualization.html#world-regions-population" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -262,7 +262,7 @@ The plot shows the increase world population from 3 billions to almost 8 billion
 <span id="cb29-12"><a href="data-visualization.html#cb29-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.05</span>,<span class="fl">0.8</span>),</span>
 <span id="cb29-13"><a href="data-visualization.html#cb29-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
 <span id="cb29-14"><a href="data-visualization.html#cb29-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
-<p><img src="01_chapter_files/figure-html/unnamed-chunk-12-1.png" width="672" />
+<p><img src="01_world_population_files/figure-html/unnamed-chunk-12-1.png" width="672" />
 The plot shows that East Asia &amp; Pacific has the largest contribution to world population, while Middle East &amp; North Africa and North America have the smallest.</p>
 <p>It’s easier to think of relative contribution rather than absolute.</p>
 <div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="data-visualization.html#cb30-1" aria-hidden="true" tabindex="-1"></a>region_pop <span class="sc">%&gt;%</span></span>
@@ -277,7 +277,7 @@ The plot shows that East Asia &amp; Pacific has the largest contribution to worl
 <span id="cb30-10"><a href="data-visualization.html#cb30-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;World regions population&quot;</span>,</span>
 <span id="cb30-11"><a href="data-visualization.html#cb30-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Regions population between 1960 and 2021, one-year interval&quot;</span>,</span>
 <span id="cb30-12"><a href="data-visualization.html#cb30-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> data_caption)</span></code></pre></div>
-<p><img src="01_chapter_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="01_world_population_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 <p>I’ll take this plot step further by removing the legend and annotating the each region “stratum” in the plot. To do this, first, calculate the percentage of ordered regions populations at a 1960. Then, compute the cumulative sum of the percentages. Finally, find the middle of each region layer where the text will be added.</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="data-visualization.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#find the mid-point of each region&#39;s layer</span></span>
 <span id="cb31-2"><a href="data-visualization.html#cb31-2" aria-hidden="true" tabindex="-1"></a>region_order <span class="ot">&lt;-</span> region_pop <span class="sc">%&gt;%</span></span>
@@ -304,7 +304,7 @@ The plot shows that East Asia &amp; Pacific has the largest contribution to worl
 <span id="cb32-15"><a href="data-visualization.html#cb32-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">&quot;World regions population&quot;</span>,</span>
 <span id="cb32-16"><a href="data-visualization.html#cb32-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Regions population between 1960 and 2021, one-year interval&quot;</span>,</span>
 <span id="cb32-17"><a href="data-visualization.html#cb32-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> data_caption)</span></code></pre></div>
-<p><img src="01_chapter_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="01_world_population_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
 <p>Looks pretty! It’s also easier to read. We can clearly see that East Asia &amp; Pacific has an almost constant contribution -around 30%- to world population. Europe and Sub-Saharan Africa have opposing trend in contribution with the first is first decreasing and the second increasing.</p>
 <p>Each world region has a different pattern and magnitude of population growth.
 Let’s make a heatmap that highlights these differences!</p>
@@ -351,7 +351,7 @@ Let’s make a heatmap that highlights these differences!</p>
 <span id="cb34-28"><a href="data-visualization.html#cb34-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.box.margin =</span> <span class="fu">margin</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>),</span>
 <span id="cb34-29"><a href="data-visualization.html#cb34-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
 <span id="cb34-30"><a href="data-visualization.html#cb34-30" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>))</span></code></pre></div>
-<p><img src="01_chapter_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="01_world_population_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 <p>Few patterns pop-out. Sub-Saharan Africa and Middle East &amp; North Africa show the largest region-specific growth. This large growth took place recently and over a short period. Europe had the smallest population at 1960 compared to other years.</p>
 <p>Heatmaps are very useful and scalable to visualize large datasets. Neverthelss, for our small dataset, we can use look at the regions population over the years compared to 2021.</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="data-visualization.html#cb35-1" aria-hidden="true" tabindex="-1"></a>region_pop <span class="ot">&lt;-</span> region_pop <span class="sc">%&gt;%</span></span>
@@ -379,7 +379,7 @@ Let’s make a heatmap that highlights these differences!</p>
 <span id="cb36-18"><a href="data-visualization.html#cb36-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">&quot;Relative population growth of world regions since 1960 compared to 2021&quot;</span>,</span>
 <span id="cb36-19"><a href="data-visualization.html#cb36-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> data_caption)<span class="sc">+</span></span>
 <span id="cb36-20"><a href="data-visualization.html#cb36-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="fu">c</span>(<span class="fl">0.6</span>, <span class="fl">0.3</span>))</span></code></pre></div>
-<p><img src="01_chapter_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p><img src="01_world_population_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 <p>Europe &amp; Central Asia population grew by only 30% since 1960 compared to Middle East &amp; North Africa and Sub-Saharan Africa huge 80% growth!</p>
 <p>What is population growth relative to 1960 across world regions?</p>
 <div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data-visualization.html#cb37-1" aria-hidden="true" tabindex="-1"></a>region_pop <span class="sc">%&gt;%</span></span>
@@ -411,7 +411,7 @@ Let’s make a heatmap that highlights these differences!</p>
 <span id="cb37-27"><a href="data-visualization.html#cb37-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.key.width =</span> <span class="fu">unit</span>(<span class="fl">0.75</span>, <span class="st">&quot;cm&quot;</span>),</span>
 <span id="cb37-28"><a href="data-visualization.html#cb37-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.box.background =</span> <span class="fu">element_rect</span>(<span class="at">color=</span><span class="st">&quot;grey20&quot;</span>, <span class="at">linewidth=</span><span class="dv">1</span>, <span class="at">fill =</span> <span class="st">&quot;grey95&quot;</span>),</span>
 <span id="cb37-29"><a href="data-visualization.html#cb37-29" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.box.margin =</span> <span class="fu">margin</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">4</span>))</span></code></pre></div>
-<p><img src="01_chapter_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="01_world_population_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 
 </div>
 </div>
@@ -453,7 +453,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/Cairo-Data-Science-Club-CDC/World-data-analysis/edit/main/01_chapter.Rmd",
+"link": "https://github.com/Cairo-Data-Science-Club-CDC/World-data-analysis/edit/main/01_world_population.Rmd",
 "text": "Edit"
 },
 "history": {
