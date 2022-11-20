@@ -12,21 +12,8 @@ github-repo: rstudio/bookdown-demo
 description: "This is a growing book of a series of mini-projects to analayze world data . The goal of this book is to build familiarity with data science tools at different levels."
 ---
 
-# Prerequisites
+# Intro
 
-This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
-
-The **bookdown** package can be installed from CRAN or Github:
-
-
-```r
-install.packages("bookdown")
-# or the development version
-# devtools::install_github("rstudio/bookdown")
-```
-
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
-
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.name/tinytex/>.
+This book contains a series of mini projects to learn data science using world data from different sources.
 
 
