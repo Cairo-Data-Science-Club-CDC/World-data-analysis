@@ -101,6 +101,7 @@ diff_growth <- country_pop %>%
        subtitle = "Absolute annual growth: difference between two subsequent years",
        caption = data_caption)+
   labs(y = "Population", x = "Year")
+diff_growth
 ```
 We can see that around 1990 the annual growth peaked to around 90 millions. Around 2013 the annual growth hit a plateau followed by a decreasing pattern around 2017. 
 
@@ -125,6 +126,7 @@ rel_growth <- country_pop %>%
        title = "",
        subtitle = "Relative annual growth: divison of two subsequent years",
        caption = data_caption)
+rel_growth
 ```
 Here we can clearly see the decrease in population growth after 1990, dropping below 1% around 2020.
 
