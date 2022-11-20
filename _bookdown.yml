@@ -1,0 +1,9 @@
+book_filename: "World-data-analysis.Rmd"
+repo: https://github.com/Cairo-Data-Science-Club-CDC/World-data-analysis
+edit: "https://github.com/Cairo-Data-Science-Club-CDC/World-data-analysis/edit/main/%s"
+delete_merged_file: true
+rmd_subdir: true
+new_session: yes
+language:
+  ui:
+    chapter_name: "Chapter "

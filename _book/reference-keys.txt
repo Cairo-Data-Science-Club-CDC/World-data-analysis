@@ -1,0 +1,10 @@
+prerequisites
+r-markdown
+including-plots
+dd
+beginner
+data-collection
+world-population
+data-visualization
+total-world-population
+world-regions-population
