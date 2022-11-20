@@ -378,6 +378,7 @@ region_pop %>%
         legend.key.width = unit(0.75, "cm"),
         legend.box.background = element_rect(color="grey20", linewidth=1, fill = "grey95"),
         legend.box.margin = margin(4, 4, 4, 4))
+
 ```
 
 

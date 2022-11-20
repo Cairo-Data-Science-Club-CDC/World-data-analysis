@@ -1,0 +1,6 @@
+prerequisites
+world-population
+data-collection
+data-visualization
+total-world-population
+world-regions-population
