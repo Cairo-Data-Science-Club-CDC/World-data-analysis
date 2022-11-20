@@ -102,6 +102,7 @@ diff_growth <- country_pop %>%
        caption = data_caption)+
   labs(y = "Population", x = "Year")
 diff_growth
+
 ```
 We can see that around 1990 the annual growth peaked to around 90 millions. Around 2013 the annual growth hit a plateau followed by a decreasing pattern around 2017. 
 

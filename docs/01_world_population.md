@@ -65,39 +65,14 @@
 
 # World population
 
-Exploratory data analysis of total world population, regions, and countries.
+This mini project explores total world population from 1960 to 2021.
 
-Where can one find data on world population? Many!
+**Learning objectives:**
 
-Primary sources:
+-   Retrieve data from public resources in R.
+-   Intermediate-level ggplot visualization skills.
+-   How to summarize a figure.
 
--   [International Database (IDB)](https://www.census.gov/data-tools/demo/idb/#/country?COUNTRY_YEAR=2022&COUNTRY_YR_ANIM=2022) from the United States Census Bureau provides population estimates and projections for 227 countries and areas.
-
--   [World Population Prospects 2022](https://population.un.org/wpp/) from the United Nations is the latest assessment considers the results of 1,758 national population censuses conducted between 1950 and 2022.
-
--   [World Bank](https://data.worldbank.org/indicator/SP.POP.TOTL) offers world population estimates from 1960 to 2021.
-
-Secondary sources:
-
--   [Gapminder](https://www.gapminder.org/data/documentation/gd003/) foundation collects data from different resources on world population from 1800 to 2100.
-
--   [Our World in Data](https://ourworldindata.org/world-population-growth) brings together the most reliable and informative data sets.
-
-Live population clocks:
-
--   [worldmeters](https://www.worldometers.info/world-population/)
-
--   [International Database from the US Census Bureau.](https://www.census.gov/popclock/world/)
-
-R interface:
-
--   [Gapminder](#https://rdrr.io/cran/gapminder/) package in R is a limited excerpt until 2017.
-
--   [WDI](https://github.com/vincentarelbundock/WDI) package allows users to search and download data from over 40 datasets hosted by the World Bank.
-
-Miscellaneous:
-
--   A [collection](https://cengel.github.io/gearup2016/SULdataAccess.html) of updated resources for accessing social science data on various topics from R.
 
 ## Data collection
 
@@ -137,12 +112,12 @@ gt::gt(head(country_pop))
 ```
 
 ```{=html}
-<div id="htcavkadfj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="jjzjlbqabf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#htcavkadfj .gt_table {
+#jjzjlbqabf .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -167,7 +142,7 @@ gt::gt(head(country_pop))
   border-left-color: #D3D3D3;
 }
 
-#htcavkadfj .gt_heading {
+#jjzjlbqabf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -179,7 +154,7 @@ gt::gt(head(country_pop))
   border-right-color: #D3D3D3;
 }
 
-#htcavkadfj .gt_title {
+#jjzjlbqabf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -191,7 +166,7 @@ gt::gt(head(country_pop))
   border-bottom-width: 0;
 }
 
-#htcavkadfj .gt_subtitle {
+#jjzjlbqabf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -203,13 +178,13 @@ gt::gt(head(country_pop))
   border-top-width: 0;
 }
 
-#htcavkadfj .gt_bottom_border {
+#jjzjlbqabf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#htcavkadfj .gt_col_headings {
+#jjzjlbqabf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -224,7 +199,7 @@ gt::gt(head(country_pop))
   border-right-color: #D3D3D3;
 }
 
-#htcavkadfj .gt_col_heading {
+#jjzjlbqabf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -244,7 +219,7 @@ gt::gt(head(country_pop))
   overflow-x: hidden;
 }
 
-#htcavkadfj .gt_column_spanner_outer {
+#jjzjlbqabf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -256,15 +231,15 @@ gt::gt(head(country_pop))
   padding-right: 4px;
 }
 
-#htcavkadfj .gt_column_spanner_outer:first-child {
+#jjzjlbqabf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#htcavkadfj .gt_column_spanner_outer:last-child {
+#jjzjlbqabf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#htcavkadfj .gt_column_spanner {
+#jjzjlbqabf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -276,7 +251,7 @@ gt::gt(head(country_pop))
   width: 100%;
 }
 
-#htcavkadfj .gt_group_heading {
+#jjzjlbqabf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -301,7 +276,7 @@ gt::gt(head(country_pop))
   vertical-align: middle;
 }
 
-#htcavkadfj .gt_empty_group_heading {
+#jjzjlbqabf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -316,15 +291,15 @@ gt::gt(head(country_pop))
   vertical-align: middle;
 }
 
-#htcavkadfj .gt_from_md > :first-child {
+#jjzjlbqabf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#htcavkadfj .gt_from_md > :last-child {
+#jjzjlbqabf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#htcavkadfj .gt_row {
+#jjzjlbqabf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -343,7 +318,7 @@ gt::gt(head(country_pop))
   overflow-x: hidden;
 }
 
-#htcavkadfj .gt_stub {
+#jjzjlbqabf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -356,7 +331,7 @@ gt::gt(head(country_pop))
   padding-right: 5px;
 }
 
-#htcavkadfj .gt_stub_row_group {
+#jjzjlbqabf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -370,11 +345,11 @@ gt::gt(head(country_pop))
   vertical-align: top;
 }
 
-#htcavkadfj .gt_row_group_first td {
+#jjzjlbqabf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#htcavkadfj .gt_summary_row {
+#jjzjlbqabf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -384,16 +359,16 @@ gt::gt(head(country_pop))
   padding-right: 5px;
 }
 
-#htcavkadfj .gt_first_summary_row {
+#jjzjlbqabf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#htcavkadfj .gt_first_summary_row.thick {
+#jjzjlbqabf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#htcavkadfj .gt_last_summary_row {
+#jjzjlbqabf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -403,7 +378,7 @@ gt::gt(head(country_pop))
   border-bottom-color: #D3D3D3;
 }
 
-#htcavkadfj .gt_grand_summary_row {
+#jjzjlbqabf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -413,7 +388,7 @@ gt::gt(head(country_pop))
   padding-right: 5px;
 }
 
-#htcavkadfj .gt_first_grand_summary_row {
+#jjzjlbqabf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -423,11 +398,11 @@ gt::gt(head(country_pop))
   border-top-color: #D3D3D3;
 }
 
-#htcavkadfj .gt_striped {
+#jjzjlbqabf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#htcavkadfj .gt_table_body {
+#jjzjlbqabf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -436,7 +411,7 @@ gt::gt(head(country_pop))
   border-bottom-color: #D3D3D3;
 }
 
-#htcavkadfj .gt_footnotes {
+#jjzjlbqabf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -450,7 +425,7 @@ gt::gt(head(country_pop))
   border-right-color: #D3D3D3;
 }
 
-#htcavkadfj .gt_footnote {
+#jjzjlbqabf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -459,7 +434,7 @@ gt::gt(head(country_pop))
   padding-right: 5px;
 }
 
-#htcavkadfj .gt_sourcenotes {
+#jjzjlbqabf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -473,7 +448,7 @@ gt::gt(head(country_pop))
   border-right-color: #D3D3D3;
 }
 
-#htcavkadfj .gt_sourcenote {
+#jjzjlbqabf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -481,64 +456,64 @@ gt::gt(head(country_pop))
   padding-right: 5px;
 }
 
-#htcavkadfj .gt_left {
+#jjzjlbqabf .gt_left {
   text-align: left;
 }
 
-#htcavkadfj .gt_center {
+#jjzjlbqabf .gt_center {
   text-align: center;
 }
 
-#htcavkadfj .gt_right {
+#jjzjlbqabf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#htcavkadfj .gt_font_normal {
+#jjzjlbqabf .gt_font_normal {
   font-weight: normal;
 }
 
-#htcavkadfj .gt_font_bold {
+#jjzjlbqabf .gt_font_bold {
   font-weight: bold;
 }
 
-#htcavkadfj .gt_font_italic {
+#jjzjlbqabf .gt_font_italic {
   font-style: italic;
 }
 
-#htcavkadfj .gt_super {
+#jjzjlbqabf .gt_super {
   font-size: 65%;
 }
 
-#htcavkadfj .gt_footnote_marks {
+#jjzjlbqabf .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#htcavkadfj .gt_asterisk {
+#jjzjlbqabf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#htcavkadfj .gt_indent_1 {
+#jjzjlbqabf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#htcavkadfj .gt_indent_2 {
+#jjzjlbqabf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#htcavkadfj .gt_indent_3 {
+#jjzjlbqabf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#htcavkadfj .gt_indent_4 {
+#jjzjlbqabf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#htcavkadfj .gt_indent_5 {
+#jjzjlbqabf .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -616,12 +591,12 @@ gt::gt(head(country_meta))
 ```
 
 ```{=html}
-<div id="ufkrvnclwq" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="kelajxrwvy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ufkrvnclwq .gt_table {
+#kelajxrwvy .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -646,7 +621,7 @@ gt::gt(head(country_meta))
   border-left-color: #D3D3D3;
 }
 
-#ufkrvnclwq .gt_heading {
+#kelajxrwvy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -658,7 +633,7 @@ gt::gt(head(country_meta))
   border-right-color: #D3D3D3;
 }
 
-#ufkrvnclwq .gt_title {
+#kelajxrwvy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -670,7 +645,7 @@ gt::gt(head(country_meta))
   border-bottom-width: 0;
 }
 
-#ufkrvnclwq .gt_subtitle {
+#kelajxrwvy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -682,13 +657,13 @@ gt::gt(head(country_meta))
   border-top-width: 0;
 }
 
-#ufkrvnclwq .gt_bottom_border {
+#kelajxrwvy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ufkrvnclwq .gt_col_headings {
+#kelajxrwvy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -703,7 +678,7 @@ gt::gt(head(country_meta))
   border-right-color: #D3D3D3;
 }
 
-#ufkrvnclwq .gt_col_heading {
+#kelajxrwvy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -723,7 +698,7 @@ gt::gt(head(country_meta))
   overflow-x: hidden;
 }
 
-#ufkrvnclwq .gt_column_spanner_outer {
+#kelajxrwvy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -735,15 +710,15 @@ gt::gt(head(country_meta))
   padding-right: 4px;
 }
 
-#ufkrvnclwq .gt_column_spanner_outer:first-child {
+#kelajxrwvy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ufkrvnclwq .gt_column_spanner_outer:last-child {
+#kelajxrwvy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ufkrvnclwq .gt_column_spanner {
+#kelajxrwvy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -755,7 +730,7 @@ gt::gt(head(country_meta))
   width: 100%;
 }
 
-#ufkrvnclwq .gt_group_heading {
+#kelajxrwvy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -780,7 +755,7 @@ gt::gt(head(country_meta))
   vertical-align: middle;
 }
 
-#ufkrvnclwq .gt_empty_group_heading {
+#kelajxrwvy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -795,15 +770,15 @@ gt::gt(head(country_meta))
   vertical-align: middle;
 }
 
-#ufkrvnclwq .gt_from_md > :first-child {
+#kelajxrwvy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ufkrvnclwq .gt_from_md > :last-child {
+#kelajxrwvy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ufkrvnclwq .gt_row {
+#kelajxrwvy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -822,7 +797,7 @@ gt::gt(head(country_meta))
   overflow-x: hidden;
 }
 
-#ufkrvnclwq .gt_stub {
+#kelajxrwvy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -835,7 +810,7 @@ gt::gt(head(country_meta))
   padding-right: 5px;
 }
 
-#ufkrvnclwq .gt_stub_row_group {
+#kelajxrwvy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -849,11 +824,11 @@ gt::gt(head(country_meta))
   vertical-align: top;
 }
 
-#ufkrvnclwq .gt_row_group_first td {
+#kelajxrwvy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ufkrvnclwq .gt_summary_row {
+#kelajxrwvy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -863,16 +838,16 @@ gt::gt(head(country_meta))
   padding-right: 5px;
 }
 
-#ufkrvnclwq .gt_first_summary_row {
+#kelajxrwvy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ufkrvnclwq .gt_first_summary_row.thick {
+#kelajxrwvy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ufkrvnclwq .gt_last_summary_row {
+#kelajxrwvy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -882,7 +857,7 @@ gt::gt(head(country_meta))
   border-bottom-color: #D3D3D3;
 }
 
-#ufkrvnclwq .gt_grand_summary_row {
+#kelajxrwvy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -892,7 +867,7 @@ gt::gt(head(country_meta))
   padding-right: 5px;
 }
 
-#ufkrvnclwq .gt_first_grand_summary_row {
+#kelajxrwvy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -902,11 +877,11 @@ gt::gt(head(country_meta))
   border-top-color: #D3D3D3;
 }
 
-#ufkrvnclwq .gt_striped {
+#kelajxrwvy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ufkrvnclwq .gt_table_body {
+#kelajxrwvy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -915,7 +890,7 @@ gt::gt(head(country_meta))
   border-bottom-color: #D3D3D3;
 }
 
-#ufkrvnclwq .gt_footnotes {
+#kelajxrwvy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -929,7 +904,7 @@ gt::gt(head(country_meta))
   border-right-color: #D3D3D3;
 }
 
-#ufkrvnclwq .gt_footnote {
+#kelajxrwvy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -938,7 +913,7 @@ gt::gt(head(country_meta))
   padding-right: 5px;
 }
 
-#ufkrvnclwq .gt_sourcenotes {
+#kelajxrwvy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -952,7 +927,7 @@ gt::gt(head(country_meta))
   border-right-color: #D3D3D3;
 }
 
-#ufkrvnclwq .gt_sourcenote {
+#kelajxrwvy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -960,64 +935,64 @@ gt::gt(head(country_meta))
   padding-right: 5px;
 }
 
-#ufkrvnclwq .gt_left {
+#kelajxrwvy .gt_left {
   text-align: left;
 }
 
-#ufkrvnclwq .gt_center {
+#kelajxrwvy .gt_center {
   text-align: center;
 }
 
-#ufkrvnclwq .gt_right {
+#kelajxrwvy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ufkrvnclwq .gt_font_normal {
+#kelajxrwvy .gt_font_normal {
   font-weight: normal;
 }
 
-#ufkrvnclwq .gt_font_bold {
+#kelajxrwvy .gt_font_bold {
   font-weight: bold;
 }
 
-#ufkrvnclwq .gt_font_italic {
+#kelajxrwvy .gt_font_italic {
   font-style: italic;
 }
 
-#ufkrvnclwq .gt_super {
+#kelajxrwvy .gt_super {
   font-size: 65%;
 }
 
-#ufkrvnclwq .gt_footnote_marks {
+#kelajxrwvy .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#ufkrvnclwq .gt_asterisk {
+#kelajxrwvy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ufkrvnclwq .gt_indent_1 {
+#kelajxrwvy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ufkrvnclwq .gt_indent_2 {
+#kelajxrwvy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ufkrvnclwq .gt_indent_3 {
+#kelajxrwvy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ufkrvnclwq .gt_indent_4 {
+#kelajxrwvy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ufkrvnclwq .gt_indent_5 {
+#kelajxrwvy .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -1153,7 +1128,10 @@ diff_growth <- country_pop %>%
        subtitle = "Absolute annual growth: difference between two subsequent years",
        caption = data_caption)+
   labs(y = "Population", x = "Year")
+diff_growth
 ```
+
+<img src="01_world_population_files/figure-html/unnamed-chunk-7-1.png" width="672" />
 We can see that around 1990 the annual growth peaked to around 90 millions. Around 2013 the annual growth hit a plateau followed by a decreasing pattern around 2017. 
 
 We can also study the annual population growth by looking at the relative increase rather than the absolute.
@@ -1178,7 +1156,10 @@ rel_growth <- country_pop %>%
        title = "",
        subtitle = "Relative annual growth: divison of two subsequent years",
        caption = data_caption)
+rel_growth
 ```
+
+<img src="01_world_population_files/figure-html/unnamed-chunk-8-1.png" width="672" />
 Here we can clearly see the decrease in population growth after 1990, dropping below 1% around 2020.
 
 Let' combine these two complementary views of the world population growth in a single plot. 
@@ -1361,7 +1342,7 @@ region_pop %>%
 
 Few patterns pop-out. Sub-Saharan Africa and Middle East & North Africa show the largest region-specific growth. This large growth took place recently and over a short period. Europe had the smallest population at 1960 compared to other years.
 
-Heatmaps are very useful and scalable to visualize large datasets. Neverthelss, for our small dataset, we can use look at the regions population over the years compared to 2021.
+Heatmaps are very useful and scalable to visualize large datasets. Neverthelss, for our small dataset, we can simply look at the regions population over the years compared to 2021.
 
 
 ```r
@@ -1372,6 +1353,7 @@ region_pop <- region_pop %>%
   ungroup() 
 ```
 
+Let's look at the plot
 
 
 ```r
@@ -1402,15 +1384,21 @@ region_pop %>%
 Europe & Central Asia population grew by only 30% since 1960 compared to Middle East & North Africa and  Sub-Saharan Africa huge 80% growth!
 
 
-What is population growth relative to 1960 across world regions?
-
+Similarly, is to compare population over the years to 1960. 
 
 ```r
-region_pop %>%
+region_pop <- region_pop %>%
   mutate(region = factor(region, rev(region_order$region))) %>%
   group_by(region) %>% 
   mutate(SP.POP.TOTL_region_start = log2(SP.POP.TOTL_region/head(SP.POP.TOTL_region,1))) %>% 
-  ungroup() %>% 
+  ungroup() 
+```
+
+Let's look at the plot
+
+
+```r
+region_pop %>% 
   ggplot(aes(year, SP.POP.TOTL_region_start, color =  region))+
   geom_line(show.legend = FALSE)+
   ggrepel::geom_text_repel(data = . %>% filter(year == 2021),
@@ -1437,7 +1425,7 @@ region_pop %>%
         legend.box.margin = margin(4, 4, 4, 4))
 ```
 
-<img src="01_world_population_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="01_world_population_files/figure-html/unnamed-chunk-21-1.png" width="672" />
 
 
 
