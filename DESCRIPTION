@@ -12,6 +12,8 @@ URL: https://cairo_data_science_club.github.io/world_data_analysis, https://cair
 Depends:
     R (>= 3.1.0)
 Imports: 
+    gganimate,
+    treemapify,
     camcorder,
     patchwork,
     rnaturalearth,

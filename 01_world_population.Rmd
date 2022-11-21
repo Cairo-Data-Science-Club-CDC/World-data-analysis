@@ -8,6 +8,8 @@
 library(tidyverse)
 library(magrittr)
 library(patchwork)
+library(treemapify)
+library(gganimate)
 #set theme 
 theme_set(cowplot::theme_cowplot())
 ```
@@ -365,6 +367,29 @@ region_pop %>%
 
 ```
 
+Finally, let's look at an animated plot of how the regions percentage change of the total world population over the years
+```{r}
+region_pop <- region_pop %>%
+  mutate(region = factor(region, rev(region_order$region))) %>%
+  group_by(year) %>% 
+  mutate(SP.POP.TOTL_region_year_perc = SP.POP.TOTL_region/sum(SP.POP.TOTL_region)) %>% 
+  ungroup() 
+```
+
+```{r}
+region_pop %>%
+  ggplot(aes(
+    label = region,
+    area = SP.POP.TOTL_region_year_perc,
+    fill = SP.POP.TOTL_region_year_perc
+  )) +
+  geom_treemap(layout = "fixed") +
+  geom_treemap_text(layout = "fixed", place = "centre", grow = TRUE, colour = "black") +
+   viridis::scale_fill_viridis(option = "turbo")+
+  transition_time(year) +
+  ease_aes('linear') +
+  labs(title = "Year: {frame_time}", fill = "Population percentage")
+```
 
 ```{r, include = FALSE, eval = FALSE}
 region_pop %>%
